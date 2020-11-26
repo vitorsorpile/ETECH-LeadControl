@@ -2,6 +2,7 @@
 #include "ui_menu.h"
 #include "Lead.h"
 #include <list>
+#include <QPixmap>
 
 //Lead &find_lead(QString name) {
 //    for (auto lead)
@@ -20,6 +21,9 @@ menu::menu(QWidget *parent)
     int row = 0;
 
     ui->setupUi(this);
+
+    QPixmap logo("C:/Users/paulo/Documents/GIT_Clone/logo.png");
+    ui->logo->setPixmap(logo.scaled(360,50,Qt::KeepAspectRatio));
 
 //    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableWidget->setColumnWidth(0, 180);
@@ -67,6 +71,10 @@ menu::menu(QWidget *parent)
 
         row++;
     }
+
+    ui->addButton->setStyleSheet("background-color:white");
+    ui->deleteButton->setStyleSheet("background-color:white");
+
 }
 
 menu::~menu()
