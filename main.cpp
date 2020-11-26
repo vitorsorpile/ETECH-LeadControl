@@ -1,18 +1,16 @@
-#include "App.h"
+#include "menu.h"
+#include "Lead.h"
 
-using namespace std;
+#include <QApplication>
+#include <QList>
 
-int main() {
-  App app;
-  Empresa acougue("Açougue", "acougue@gmail.com", "1111-1111");
-  Lead lead(acougue, "Robson", "Fechado", "19/11/2020", "Outros", "Vitor", "Dale");
-  app.carregar();
-  app.addLead(lead);
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    QList<Lead*> leads;
 
-  for (auto lead : app.getLeads()) {
-    cout << lead << endl;
-  }
-  
-  app.salvar();
-  return 0;
+    menu w;
+
+    w.show();
+    return a.exec();
 }

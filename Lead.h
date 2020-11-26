@@ -1,59 +1,62 @@
 #ifndef LEAD_H
 #define LEAD_H
 
+#include <QListWidgetItem>
+
 #include "Empresa.h"
 
-// enum class Status { Prospectar,
-//                     Diagnostico,
-//                     Proposta, 
-//                     Negociacao, 
-//                     Fechado, 
-//                     Perdido
-//                   };
+enum class Status { Prospectar,
+                    Diagnostico,
+                    Proposta, 
+                    Negociacao, 
+                    Fechado, 
+                    Perdido
+                  };
 
-// enum class TiposDeContato { Email,
-//                             Telefone,
-//                             Whatsapp,
-//                             Outros
-//                           };
+enum class TiposDeContato { Email,
+                            Telefone,
+                            Whatsapp,
+                            Outros
+                          };
 
-class Lead {  
+class Lead : public QListWidgetItem {
   Empresa empresa; 
-  std::string responsavelDaEmpresa;
+  QString responsavelDaEmpresa;
   // Status status; 
-  std::string status;
-  std::string ultimoContato; // mudar para data depois
+  QString status;
+  QString ultimoContato; // mudar para data depois
   // TiposDeContato tipoDoContato; 
-  std::string tipoDoContato;
-  std::string membro; //classe Membro
-  std::string notas;
+  QString tipoDoContato;
+  QString membro; //classe Membro
+  QString notas;
 
-  public:
+    public:
     // Construtor
-    // Lead(Empresa empresa = Empresa{}, std::string responsavelDaEmpresa = "", Status status = Status::Prospectar , std::string ultimoContato = "", TiposDeContato tipoDoContato = TiposDeContato::Outros, std::string membro = "", std::string notas = "");
-    Lead(Empresa empresa = Empresa{}, std::string responsavelDaEmpresa = "", std::string status = "", std::string ultimoContato = "", std::string tipoDoContato = "", std::string membro = "", std::string notas = "");
+    Lead() {}
+    // Lead(Empresa empresa = Empresa{}, QString responsavelDaEmpresa = "", Status status = Status::Prospectar , QString ultimoContato = "", TiposDeContato tipoDoContato = TiposDeContato::Outros, QString membro = "", QString notas = "");
+    Lead(Empresa empresa, QString responsavelDaEmpresa, QString status, QString ultimoContato, QString tipoDoContato, QString membro, QString notas);
 
     // Métodos SET
     void setEmpresa(Empresa empresa);
-    void setResponsavelDaEmpresa(std::string responsavelDaEmpresa);
+    void setResponsavelDaEmpresa(QString responsavelDaEmpresa);
     // void setStatus(Status status);
-    void setStatus(std::string status);
-    void setUltimoContato(std::string ultimoContato);
+    void setStatus(QString status);
+    void setUltimoContato(QString ultimoContato);
     // void setTipoDoContato(TiposDeContato tipoDoContato);
-    void setTipoDoContato(std::string tipoDoContato);
-    void setMembro(std::string membro);
-    void setNotas(std::string notas);
+    void setTipoDoContato(QString tipoDoContato);
+    void setMembro(QString membro);
+    void setNotas(QString notas);
 
     // Métodos GET
     Empresa getEmpresa();
-    std::string getResponsavelDaEmpresa();
+    QString getResponsavelDaEmpresa();
     // Status getStatus();
-    std::string getStatus();
-    std::string getUltimoContato();
+    QString getStatus();
+    QString getUltimoContato();
     // TiposDeContato getTipoDoContato();
-    std::string getTipoDoContato();
-    std::string getMembro();
-    std::string getNotas();
+    QString getTipoDoContato();
+    QString getMembro();
+    QString getNotas();
 
     //Sobrecarga de operadores
     bool operator==(const Lead& rhs) const;
@@ -61,10 +64,10 @@ class Lead {
 };
 
 // Imprimir enums como strings
-// std::string enum_to_string(Status type);
-// std::string enum_to_string(TiposDeContato type);
+// QString enum_to_string(Status type);
+// QString enum_to_string(TiposDeContato type);
 
 // Transformar strings nos respectivos enums
-// template <class T> T string_to_enum(std::string str);
+// template <class T> T string_to_enum(QString str);
 
 #endif

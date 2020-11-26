@@ -2,24 +2,25 @@
 #define EMPRESA_H
 
 #include <iostream>
+#include <QString>
 
 class Empresa {
-  std::string nome;
-  std::string email;
-  std::string telefone;
+  QString nome;
+  QString email;
+  QString telefone;
 
   public:
     //Construtor
-    Empresa(std::string nome = "", std::string email = "", std::string telefone = "");
+    Empresa(QString nome = "", QString email = "", QString telefone = "");
 
     //Métodos SET
-    void setNome(std::string nome);
-    void setEmail(std::string email);
-    void setTelefone(std::string telefone);
+    void setNome(QString nome);
+    void setEmail(QString email);
+    void setTelefone(QString telefone);
     //Métodos GET
-    std::string getNome();
-    std::string getEmail();
-    std::string getTelefone();
+    QString getNome();
+    QString getEmail();
+    QString getTelefone();
 
     //Sobrecarga de operadores
     bool operator==(const Empresa& rhs) const;

@@ -1,7 +1,7 @@
 #include "Lead.h"
 
 // Construtor
-// Lead::Lead(Empresa empresa, std::string responsavelDaEmpresa, Status status, std::string ultimoContato, TiposDeContato tipoDoContato, std::string membro, std::string notas) {
+// Lead::Lead(Empresa empresa, QString responsavelDaEmpresa, Status status, QString ultimoContato, TiposDeContato tipoDoContato, QString membro, QString notas) {
 //   this->setEmpresa(empresa);
 //   this->setResponsavelDaEmpresa(responsavelDaEmpresa);
 //   this->setStatus(status);
@@ -10,7 +10,7 @@
 //   this->setMembro(membro);
 //   this->setNotas(notas);
 // }
-Lead::Lead(Empresa empresa, std::string responsavelDaEmpresa, std::string status, std::string ultimoContato, std::string tipoDoContato, std::string membro, std::string notas) {
+Lead::Lead(Empresa empresa, QString responsavelDaEmpresa, QString status, QString ultimoContato, QString tipoDoContato, QString membro, QString notas) {
   this->setEmpresa(empresa);
   this->setResponsavelDaEmpresa(responsavelDaEmpresa);
   this->setStatus(status);
@@ -25,7 +25,7 @@ void Lead::setEmpresa(Empresa empresa){
   this->empresa = empresa;
 }
 
-void Lead::setResponsavelDaEmpresa(std::string responsavelDaEmpresa){
+void Lead::setResponsavelDaEmpresa(QString responsavelDaEmpresa){
   this->responsavelDaEmpresa = responsavelDaEmpresa;
 }
 
@@ -33,11 +33,11 @@ void Lead::setResponsavelDaEmpresa(std::string responsavelDaEmpresa){
 //   this->status = status;
 // }
 
-void Lead::setStatus(std::string status) {
+void Lead::setStatus(QString status) {
   this->status = status;
 }
 
-void Lead::setUltimoContato(std::string ultimoContato){
+void Lead::setUltimoContato(QString ultimoContato){
   this->ultimoContato = ultimoContato;
 }
 
@@ -45,15 +45,15 @@ void Lead::setUltimoContato(std::string ultimoContato){
 //   this->tipoDoContato = tipoDoContato;
 // }
 
-void Lead::setTipoDoContato(std::string tipoDoContato) {
+void Lead::setTipoDoContato(QString tipoDoContato) {
   this->tipoDoContato = tipoDoContato;
 }
 
-void Lead::setMembro(std::string membro){
+void Lead::setMembro(QString membro){
   this->membro = membro;
 }
 
-void Lead::setNotas(std::string notas){
+void Lead::setNotas(QString notas){
   this->notas = notas;
 }
 
@@ -61,31 +61,31 @@ void Lead::setNotas(std::string notas){
 Empresa Lead::getEmpresa(){
   return this->empresa;
 }
-std::string Lead::getResponsavelDaEmpresa(){
+QString Lead::getResponsavelDaEmpresa(){
   return this->responsavelDaEmpresa;
 }
 // Status Lead::getStatus(){
 //   return this->status;
 // }
 
-std::string Lead::getStatus() {
+QString Lead::getStatus() {
   return this->status;
 }
 
-std::string Lead::getUltimoContato(){
+QString Lead::getUltimoContato(){
   return this->ultimoContato;
 }
 // TiposDeContato Lead::getTipoDoContato(){
 //   return this->tipoDoContato;
 // }
-std::string Lead::getTipoDoContato() {
+QString Lead::getTipoDoContato() {
   return this->tipoDoContato;
 }
 
-std::string Lead::getMembro(){
+QString Lead::getMembro(){
   return this->membro;
 } 
-std::string Lead::getNotas(){
+QString Lead::getNotas(){
   return this->notas;
 }
 
@@ -94,16 +94,16 @@ bool Lead::operator==(const Lead& rhs) const{
   return ((this->empresa == rhs.empresa) && (this->ultimoContato == rhs.ultimoContato));
 }
 
-std::ostream& operator<<(std::ostream& os, Lead& lead) {
-  os << lead.empresa.getNome() << ", " << lead.responsavelDaEmpresa << ", ";
-  os << lead.status << ", " << lead.ultimoContato << ", ";
-  os << lead.tipoDoContato << ", " << lead.membro << ", ";
-  os << lead.notas;
-  return os;
-}
+//std::ostream& operator<<(std::ostream& os, Lead& lead) {
+//  os << lead.empresa.getNome() << ", " << lead.responsavelDaEmpresa << ", ";
+//  os << lead.status << ", " << lead.ultimoContato << ", ";
+//  os << lead.tipoDoContato << ", " << lead.membro << ", ";
+//  os << lead.notas;
+//  return os;
+//}
 
 // Imprimir enums como strings
-// std::string enum_to_string(Status type) {
+// QString enum_to_string(Status type) {
 //   switch (type)
 //   {
 //    // Enum Status
@@ -125,7 +125,7 @@ std::ostream& operator<<(std::ostream& os, Lead& lead) {
 //   }
 // }
 
-// std::string enum_to_string(TiposDeContato type) {
+// QString enum_to_string(TiposDeContato type) {
 //   switch (type)
 //   {
 //   case TiposDeContato::Email:
@@ -145,7 +145,7 @@ std::ostream& operator<<(std::ostream& os, Lead& lead) {
 
 // Transformar strings nos respectivos enums
 // template <class T>
-// T string_to_enum(std::string str) {
+// T string_to_enum(QString str) {
 //   switch (str)
 //   {
 //   // Status enum
