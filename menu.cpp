@@ -7,14 +7,9 @@
 #include <list>
 
 #include <QPixmap>
-
 #include <sstream>
 #include <fstream>
 
-
-//Lead &find_lead(QString name) {
-//    for (auto lead)
-//}
 
 menu::menu(QWidget *parent)
     : QWidget(parent)
@@ -23,9 +18,8 @@ menu::menu(QWidget *parent)
 
     this->rows = 0;
     ui->setupUi(this);
-
-
-    QPixmap logo("C:/Users/paulo/Documents/GIT_Clone/logo.png");
+    QString logoPath = QApplication::applicationDirPath() + "/../../Interface/logo.png";
+    QPixmap logo(logoPath);
     ui->logo->setPixmap(logo.scaled(360,50,Qt::KeepAspectRatio));
 
     this->carregar();
@@ -33,8 +27,9 @@ menu::menu(QWidget *parent)
 //    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableWidget->setColumnWidth(0, 180);
     ui->tableWidget->setColumnWidth(6, 274);
-    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->horizontalHeader()->setHighlightSections(false);
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+
 
     for (auto lead : this->leads) {
         this->addRow(lead);
@@ -60,7 +55,8 @@ void menu::deleteLead(Lead lead) {
 }
 
 void menu::salvar() {
-  std::ofstream file("E:/prog3/ControleDeLead/ETECH-LeadControl/Interface/data/db.txt");
+  QString path = QApplication::applicationDirPath() + "/../../Interface/data/db.txt";
+  std::ofstream file(path.toStdString());
   if (file.is_open()) {
     for (auto lead : this->leads) {
       if (lead.getEmpresa().getNome() == "") continue;
@@ -71,7 +67,8 @@ void menu::salvar() {
 }
 
 void menu::carregar() {
-    QFile file("E:/prog3/ControleDeLead/ETECH-LeadControl/Interface/data/db.txt");
+    QString path = QApplication::applicationDirPath() + "/../../Interface/data/db.txt";
+    QFile file(path);
 
     if (file.open(QIODevice::ReadOnly)){
 
@@ -107,15 +104,19 @@ void menu::on_addButton_clicked()
 void menu::on_deleteButton_clicked()
 {
 
-    ui->tableWidget->removeRow(ui->tableWidget->currentRow());
-//    this->leads.remove([] () { });
-//    this->strings.remove((ui->listWidget->currentItem()));
-//    std::cout << ui->listWidget->currentItem()->text();
+
+    if (ui->tableWidget->selectionModel()->isRowSelected(ui->tableWidget->currentRow())) {
+        QString empName = ui->tableWidget->item(ui->tableWidget->currentRow(), 0)->text();
+        Lead* l = this->leadByEmpresa(empName);
+        ui->tableWidget->removeRow(ui->tableWidget->currentRow());
+
+        this->deleteLead(*l);
+    }
+
+
 }
 
-void menu::test(Lead *lead) {
-//    std::cout << "Recebi o sinal\n";
-//    std::cout << lead->getResponsavelDaEmpresa().toStdString();
+void menu::createLead(Lead *lead) {
     this->addLead(*lead);
     this->addRow(*lead);
 
@@ -160,4 +161,12 @@ void menu::addRow(Lead lead) {
     ui->tableWidget->item(rows,6)->setData(Qt::DisplayRole, lead.getNotas());
 
     rows++;
+}
+
+Lead* menu::leadByEmpresa(QString emp) {
+    for (auto &lead : this->leads) {
+        if (emp == lead.getEmpresa().getNome())
+            return &lead;
+    }
+    return nullptr;
 }

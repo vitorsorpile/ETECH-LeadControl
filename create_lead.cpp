@@ -8,13 +8,13 @@ create_lead::create_lead(QWidget *parent) :
     ui(new Ui::create_lead)
 {
     ui->setupUi(this);
-
-    QPixmap logo("C:/Users/paulo/Documents/GIT_Clone/logo.png");
+    QString logoPath = QApplication::applicationDirPath() + "/../../Interface/logo.png";
+    QPixmap logo(logoPath);
     ui->logo->setPixmap(logo.scaled(250,42,Qt::KeepAspectRatio));
     ui->buttonBox->setStyleSheet("background-color:white");
     ui->statusComboBox->setStyleSheet("background-color:white");
 
-    QObject::connect(this, SIGNAL(lead_create_signal(Lead*)), this->parent(), SLOT(test(Lead*)));
+    QObject::connect(this, SIGNAL(lead_create_signal(Lead*)), this->parent(), SLOT(createLead(Lead*)));
 
 }
 
@@ -37,10 +37,4 @@ void create_lead::on_buttonBox_accepted()
 
     emit this->lead_create_signal(lead);
 
-//    std::ofstream file("E:/prog3/ControleDeLead/ETECH-LeadControl/Interface/data/db.txt", std::ios::app);
-//    if (file.is_open()) {
-//          file << lead << std::endl;
-
-//          file.close();
-//    }
 }

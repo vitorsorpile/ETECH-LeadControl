@@ -33,12 +33,13 @@ private slots:
     void addLead(Lead lead);
 
     void deleteLead(Lead lead);
-    void test(Lead *lead);
+    void createLead(Lead *lead);
 
 
 private:
     Ui::menu *ui;
     int rows;
+    Lead* leadByEmpresa(QString l);
 
 };
 #endif // MENU_H

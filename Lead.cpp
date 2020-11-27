@@ -1,43 +1,43 @@
 #include "Lead.h"
 
-Lead::Lead(Empresa empresa, QString responsavelDaEmpresa, QString status, QString ultimoContato, QString tipoDoContato, QString membro, QString notas) {
-  this->setEmpresa(empresa);
-  this->setResponsavelDaEmpresa(responsavelDaEmpresa);
-  this->setStatus(status);
-  this->setUltimoContato(ultimoContato);
-  this->setTipoDoContato(tipoDoContato);
-  this->setMembro(membro);
-  this->setNotas(notas);
+Lead::Lead(Empresa emp, QString responsavel, QString stts, QString ultContato, QString tipoContato, QString memb, QString notes) {
+  this->setEmpresa(emp);
+  this->setResponsavelDaEmpresa(responsavel);
+  this->setStatus(stts);
+  this->setUltimoContato(ultContato);
+  this->setTipoDoContato(tipoContato);
+  this->setMembro(memb);
+  this->setNotas(notes);
 }
 
 // Métodos SET
-void Lead::setEmpresa(Empresa empresa){
-  this->empresa = empresa;
+void Lead::setEmpresa(Empresa emp){
+  this->empresa = emp;
 }
 
-void Lead::setResponsavelDaEmpresa(QString responsavelDaEmpresa){
-  this->responsavelDaEmpresa = responsavelDaEmpresa;
+void Lead::setResponsavelDaEmpresa(QString responsavel){
+  this->responsavelDaEmpresa = responsavel;
 }
 
-void Lead::setStatus(QString status) {
-  this->status = status;
+void Lead::setStatus(QString stts) {
+  this->status = stts;
 }
 
-void Lead::setUltimoContato(QString ultimoContato){
-  this->ultimoContato = ultimoContato;
+void Lead::setUltimoContato(QString ultContato){
+  this->ultimoContato = ultContato;
 }
 
 
-void Lead::setTipoDoContato(QString tipoDoContato) {
-  this->tipoDoContato = tipoDoContato;
+void Lead::setTipoDoContato(QString tipoContato) {
+  this->tipoDoContato = tipoContato;
 }
 
-void Lead::setMembro(QString membro){
-  this->membro = membro;
+void Lead::setMembro(QString memb){
+  this->membro = memb;
 }
 
-void Lead::setNotas(QString notas){
-  this->notas = notas;
+void Lead::setNotas(QString notes){
+  this->notas = notes;
 }
 
 // Métodos GET

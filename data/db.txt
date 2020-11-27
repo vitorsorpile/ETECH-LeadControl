@@ -1,11 +1,2 @@
-Padaria do Josney, Josney, Em negociacao, 18/11/2020, Email, Paulinho, Notinha
-Padaria do Josney, Jeff, Perdido, 20/07/2020, Telefone, Gustavo, Achou muito caro
-Mazinho Lanches, Osmar, Negociacao, 25/11/2020, Telefone, Gustavo, Mazinho nao apareceu na reuniao
-Mazinho Lanches, Jonas, Fechado, 10/02/1992, Carta, Gian, Projeto muito bom
-Batata, Batata, Diagnostico, Ontem, BatataPhone, Batatao,              
-dsasdsad, dsadsada, dsadasdas, dasdasd, dasdadsad, dasdsadasd, asdsa
-dale, daler, Fechado, daleu, dalef, dalem, 
-resize, resizer, Proposta, resizeu, resizef, resizem, 
-update, updater, Proposta, updateu, updatef, updatem, 
-addrow, addrowr, Negociacao, addrowu, addrowf, addrowm, 
-Paulo Corporation, Paulo, Proposta, Amanha, Maquina do tempo, Vitao, 
+Empresa Exemplo, Responsavel Exemplo, Diagnostico, 27/11/2020, E-mail, Paulo, 
+Empresa Exemplo 2, Responsavel 2, Fechado, 27/11/2020, Telefone, Vitor, 
