@@ -22,12 +22,10 @@ enum class TiposDeContato { Email,
 class Lead : public QListWidgetItem {
   Empresa empresa; 
   QString responsavelDaEmpresa;
-  // Status status; 
   QString status;
   QString ultimoContato; // mudar para data depois
-  // TiposDeContato tipoDoContato; 
   QString tipoDoContato;
-  QString membro; //classe Membro
+  QString membro;
   QString notas;
 
     public:
@@ -60,7 +58,7 @@ class Lead : public QListWidgetItem {
 
     //Sobrecarga de operadores
     bool operator==(const Lead& rhs) const;
-    friend std::ostream& operator<<(std::ostream& os, Lead& lead);
+    friend std::ostream& operator<<(std::ostream& os, Lead& ld);
 };
 
 // Imprimir enums como strings
