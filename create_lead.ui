@@ -49,6 +49,12 @@
           <height>0</height>
          </size>
         </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="text">
          <string>Nome da Empresa</string>
         </property>
@@ -206,7 +212,7 @@
         </item>
         <item>
          <property name="text">
-          <string>Diagnóstico</string>
+          <string>Diagnostico</string>
          </property>
         </item>
         <item>
@@ -216,7 +222,7 @@
         </item>
         <item>
          <property name="text">
-          <string>Negociação</string>
+          <string>Negociacao</string>
          </property>
         </item>
         <item>

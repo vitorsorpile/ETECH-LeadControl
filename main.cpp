@@ -7,10 +7,9 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QList<Lead*> leads;
 
     menu w;
-
+//    QObject::connect(w.cl, SIGNAL(on_buttonBox_accepted()), &w, SLOT(test()));
     w.show();
     return a.exec();
 }

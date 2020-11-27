@@ -4,7 +4,10 @@
 #include <iostream>
 #include <QString>
 
+
 class Empresa {
+  friend class Lead;
+
   QString nome;
   QString email;
   QString telefone;

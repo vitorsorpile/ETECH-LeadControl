@@ -19,6 +19,10 @@ public:
 
 private slots:
     void on_buttonBox_accepted();
+signals:
+    void add_lead();
+    void lead_create_signal(Lead* l);
+
 
 private:
     Ui::create_lead *ui;

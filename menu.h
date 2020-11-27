@@ -16,16 +16,29 @@ class menu : public QWidget
     std::list<Lead> leads;
 
 public:
+    create_lead *cl;
     menu(QWidget *parent = nullptr);
     ~menu();
+
+
+    void salvar();
+    void carregar();
+    void addRow(Lead lead);
 
 private slots:
     void on_addButton_clicked();
 
     void on_deleteButton_clicked();
 
+    void addLead(Lead lead);
+
+    void deleteLead(Lead lead);
+    void test(Lead *lead);
+
+
 private:
     Ui::menu *ui;
-    create_lead *cl;
+    int rows;
+
 };
 #endif // MENU_H

@@ -37,7 +37,7 @@ bool Empresa::operator==(const Empresa& rhs) const {
   return this->nome == rhs.nome;
 }
 
-//std::ostream& operator<<(std::ostream& os, const Empresa& emp) {
-//  os << emp.nome << ", " << emp.email << ", " << emp.telefone;
-//  return os;
-//}
+std::ostream& operator<<(std::ostream& os, const Empresa& emp) {
+  os << emp.nome.toStdString() << ", " << emp.email.toStdString() << ", " << emp.telefone.toStdString();
+  return os;
+}
