@@ -8,7 +8,14 @@ create_lead::create_lead(QWidget *parent) :
     ui(new Ui::create_lead)
 {
     ui->setupUi(this);
+
+    QPixmap logo("C:/Users/paulo/Documents/GIT_Clone/logo.png");
+    ui->logo->setPixmap(logo.scaled(250,42,Qt::KeepAspectRatio));
+    ui->buttonBox->setStyleSheet("background-color:white");
+    ui->statusComboBox->setStyleSheet("background-color:white");
+
     QObject::connect(this, SIGNAL(lead_create_signal(Lead*)), this->parent(), SLOT(test(Lead*)));
+
 }
 
 create_lead::~create_lead()

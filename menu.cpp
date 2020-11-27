@@ -5,8 +5,12 @@
 #include <QFile>
 #include <QTextStream>
 #include <list>
+
+#include <QPixmap>
+
 #include <sstream>
 #include <fstream>
+
 
 //Lead &find_lead(QString name) {
 //    for (auto lead)
@@ -19,7 +23,13 @@ menu::menu(QWidget *parent)
 
     this->rows = 0;
     ui->setupUi(this);
+
+
+    QPixmap logo("C:/Users/paulo/Documents/GIT_Clone/logo.png");
+    ui->logo->setPixmap(logo.scaled(360,50,Qt::KeepAspectRatio));
+
     this->carregar();
+
 //    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableWidget->setColumnWidth(0, 180);
     ui->tableWidget->setColumnWidth(6, 274);
@@ -29,6 +39,10 @@ menu::menu(QWidget *parent)
     for (auto lead : this->leads) {
         this->addRow(lead);
     }
+
+    ui->addButton->setStyleSheet("background-color:white");
+    ui->deleteButton->setStyleSheet("background-color:white");
+
 }
 
 menu::~menu()
