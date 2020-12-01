@@ -1,2 +1,2 @@
-Empresa Exemplo, Responsavel Exemplo, Diagnostico, 27/11/2020, E-mail, Paulo, 
+Empresa Exemplo, Responsavel Exemplo, Diagnostico, 27/11/2020, E-mail, Paulo, Notas
 Empresa Exemplo 2, Responsavel 2, Fechado, 27/11/2020, Telefone, Vitor, 

@@ -34,6 +34,7 @@ private slots:
 
     void deleteLead(Lead lead);
     void createLead(Lead *lead);
+    void tableItemClicked(int, int);
 
 
 private:

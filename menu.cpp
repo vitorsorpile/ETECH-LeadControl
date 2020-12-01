@@ -18,19 +18,24 @@ menu::menu(QWidget *parent)
 
     this->rows = 0;
     ui->setupUi(this);
-    QString logoPath = QApplication::applicationDirPath() + "/../../Interface/logo.png";
-    QPixmap logo(logoPath);
+
+
+    connect(ui->tableWidget, SIGNAL(cellDoubleClicked(int,int)), this, SLOT(tableItemClicked(int,int)));
+    // Coloca logo da ETECH
+    QPixmap logo("images/logo.png");
     ui->logo->setPixmap(logo.scaled(360,50,Qt::KeepAspectRatio));
 
+    // Carrega dados do banco de dados
     this->carregar();
 
+    // Configurações da tabela
 //    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableWidget->setColumnWidth(0, 180);
     ui->tableWidget->setColumnWidth(6, 274);
     ui->tableWidget->horizontalHeader()->setHighlightSections(false);
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-
+    // Coloca cada lead em uma linha na tabela na interface
     for (auto lead : this->leads) {
         this->addRow(lead);
     }
@@ -42,6 +47,7 @@ menu::menu(QWidget *parent)
 
 menu::~menu()
 {
+    // Salva os leads no banco de dados antes de finalizar o programa
     this->salvar();
     delete ui;
 }
@@ -54,9 +60,9 @@ void menu::deleteLead(Lead lead) {
   this->leads.remove(lead);
 }
 
+// Salva cada lead em uma linha no banco de dados usando o operador << sobrecarregado
 void menu::salvar() {
-  QString path = QApplication::applicationDirPath() + "/../../Interface/data/db.txt";
-  std::ofstream file(path.toStdString());
+  std::ofstream file("data/db.txt");
   if (file.is_open()) {
     for (auto lead : this->leads) {
       if (lead.getEmpresa().getNome() == "") continue;
@@ -67,8 +73,7 @@ void menu::salvar() {
 }
 
 void menu::carregar() {
-    QString path = QApplication::applicationDirPath() + "/../../Interface/data/db.txt";
-    QFile file(path);
+    QFile file("data/db.txt");
 
     if (file.open(QIODevice::ReadOnly)){
 
@@ -104,8 +109,7 @@ void menu::on_addButton_clicked()
 void menu::on_deleteButton_clicked()
 {
 
-
-    if (ui->tableWidget->selectionModel()->isRowSelected(ui->tableWidget->currentRow())) {
+    if (ui->tableWidget->selectionModel()->isRowSelected(ui->tableWidget->currentRow(),QModelIndex())) {
         QString empName = ui->tableWidget->item(ui->tableWidget->currentRow(), 0)->text();
         Lead* l = this->leadByEmpresa(empName);
         ui->tableWidget->removeRow(ui->tableWidget->currentRow());
@@ -163,10 +167,23 @@ void menu::addRow(Lead lead) {
     rows++;
 }
 
+// Retorna o lead correspondente ao nome da empresa passado como parâmetro
 Lead* menu::leadByEmpresa(QString emp) {
     for (auto &lead : this->leads) {
         if (emp == lead.getEmpresa().getNome())
             return &lead;
     }
     return nullptr;
+}
+
+void menu::tableItemClicked(int row, int column) {
+//    std::cout << row << ", " << column << std::endl;
+    if (row == 0) {
+        std::cout << "Implementa a pagina das empresas\n";
+
+    }
+
+//    Lead *lead = leadByEmpresa(ui->tableWidget->item(row,0)->text());
+    std::cout << ui->tableWidget->item(row,column)->text().toStdString() << std::endl;
+
 }

@@ -8,12 +8,16 @@ create_lead::create_lead(QWidget *parent) :
     ui(new Ui::create_lead)
 {
     ui->setupUi(this);
-    QString logoPath = QApplication::applicationDirPath() + "/../../Interface/logo.png";
-    QPixmap logo(logoPath);
+
+    //Colocar logo da ETECH
+    QPixmap logo("images/logo.png");
     ui->logo->setPixmap(logo.scaled(250,42,Qt::KeepAspectRatio));
+   
+    //Mudar a cor da caixa de seleção
     ui->buttonBox->setStyleSheet("background-color:white");
     ui->statusComboBox->setStyleSheet("background-color:white");
 
+    //Criar conexão entre a tela principal e a de adicionar lead
     QObject::connect(this, SIGNAL(lead_create_signal(Lead*)), this->parent(), SLOT(createLead(Lead*)));
 
 }
@@ -25,6 +29,7 @@ create_lead::~create_lead()
 
 void create_lead::on_buttonBox_accepted()
 {
+    //Criar novo lead
     auto lead = new Lead();
 
     lead->setEmpresa(Empresa(ui->empresa->text()));

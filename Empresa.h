@@ -14,12 +14,12 @@ class Empresa {
 
   public:
     //Construtor
-    Empresa(QString nome = "", QString email = "", QString telefone = "");
+    Empresa(QString n = "", QString e = "", QString tel= "");
 
     //Métodos SET
-    void setNome(QString nome);
-    void setEmail(QString email);
-    void setTelefone(QString telefone);
+    void setNome(QString n);
+    void setEmail(QString e);
+    void setTelefone(QString tel);
     //Métodos GET
     QString getNome();
     QString getEmail();

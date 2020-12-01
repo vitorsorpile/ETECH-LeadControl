@@ -1,23 +1,23 @@
 #include "Empresa.h"
 
 //Construtor
-Empresa::Empresa(QString nome, QString email, QString telefone) {
-  this->setNome(nome);
-  this->setEmail(email);
-  this->setTelefone(telefone);
+Empresa::Empresa(QString n, QString e, QString tel) {
+  this->setNome(n);
+  this->setEmail(e);
+  this->setTelefone(tel);
 }
 
 //Métodos SET
-void Empresa::setNome(QString nome) {
-  this->nome = nome;
+void Empresa::setNome(QString n) {
+  this->nome = n;
 }
 
-void Empresa::setEmail(QString email) {
-  this->email = email;
+void Empresa::setEmail(QString e) {
+  this->email = e;
 }
 
-void Empresa::setTelefone(QString telefone) {
-  this->telefone = telefone;
+void Empresa::setTelefone(QString tel) {
+  this->telefone = tel;
 }
 
 //Métodos GET
