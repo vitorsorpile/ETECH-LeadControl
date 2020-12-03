@@ -16,21 +16,27 @@ QMAKE_CXXFLAGS += -Wall -Wextra -Wcast-align -Wconversion -Wcast-qual -Wctor-dto
 SOURCES += \
     Empresa.cpp \
     Lead.cpp \
+    create_empresa.cpp \
     create_lead.cpp \
     main.cpp \
-    menu.cpp
+    menu.cpp \
+    table.cpp
 
 HEADERS += \
     Empresa.h \
     Lead.h \
+    create_empresa.h \
     create_lead.h \
-    menu.h
+    menu.h \
+    table.h
 
 FORMS += \
+    create_empresa.ui \
     create_lead.ui \
     menu.ui
 
 RC_ICONS = icon.ico
+ICON = icon.ico
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

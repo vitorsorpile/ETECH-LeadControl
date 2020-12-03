@@ -1,6 +1,7 @@
 #include "menu.h"
 #include "ui_menu.h"
 #include "Lead.h"
+#include "table.h"
 
 #include <QFile>
 #include <QTextStream>
@@ -16,11 +17,17 @@ menu::menu(QWidget *parent)
     , ui(new Ui::menu)
 {
 
-    this->rows = 0;
     ui->setupUi(this);
 
+    // Inicializa variáveis
+    this->switchButtonPressed = false;
 
-    connect(ui->tableWidget, SIGNAL(cellDoubleClicked(int,int)), this, SLOT(tableItemClicked(int,int)));
+    // Cria tabelas
+    this->empresaTab = new empresaTable(0, 4, this);
+    this->leadTab = new leadTable(0, 6, this);
+
+//    connect(this->leadTab, SIGNAL(cellDoubleClicked(int,int)), this, SLOT(tableItemClicked(int,int)));
+
     // Coloca logo da ETECH
     QPixmap logo("images/logo.png");
     ui->logo->setPixmap(logo.scaled(360,50,Qt::KeepAspectRatio));
@@ -28,30 +35,48 @@ menu::menu(QWidget *parent)
     // Carrega dados do banco de dados
     this->carregar();
 
+
     // Configurações da tabela
-//    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tableWidget->setColumnWidth(0, 180);
-    ui->tableWidget->setColumnWidth(6, 274);
-    ui->tableWidget->horizontalHeader()->setHighlightSections(false);
-    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    this->empresaTab->horizontalHeader()->setFont(QFont("Ubuntu", 12, QFont::Bold));
+    this->empresaTab->horizontalHeader()->setHighlightSections(false);
+
+    this->leadTab->horizontalHeader()->setFont(QFont("Ubuntu", 12, QFont::Bold));
+    this->leadTab->horizontalHeader()->setHighlightSections(false);
+
+
 
     // Coloca cada lead em uma linha na tabela na interface
     for (auto lead : this->leads) {
-        this->addRow(lead);
+        this->leadTab->addRow();
+        this->leadTab->setRow(lead);
     }
 
+    // Coloca cada empresa em uma linha na tabela na interface
+    for (auto emp: this->empresas) {
+        this->empresaTab->addRow();
+        this->empresaTab->setRow(emp);
+    }
+
+
+    // Muda a cor dos botões
     ui->addButton->setStyleSheet("background-color:white");
     ui->deleteButton->setStyleSheet("background-color:white");
+    ui->switchTableButton->setStyleSheet("background-color:white");
+
 
 }
 
+// Destrutor
 menu::~menu()
 {
-    // Salva os leads no banco de dados antes de finalizar o programa
-    this->salvar();
+    // Salva os elementos no banco de dados passado como parâmetro antes de finalizar o programa
+    this->salvar(leads, "data/leads.txt");
+    this->salvar(empresas, "data/empresas.txt");
+
     delete ui;
 }
 
+// Adicionar e deletar leads/empresas das respectivas listas
 void menu::addLead(Lead lead) {
   this->leads.push_back(lead);
 }
@@ -60,20 +85,30 @@ void menu::deleteLead(Lead lead) {
   this->leads.remove(lead);
 }
 
-// Salva cada lead em uma linha no banco de dados usando o operador << sobrecarregado
-void menu::salvar() {
-  std::ofstream file("data/db.txt");
+void menu::addEmpresa(Empresa emp) {
+    this->empresas.push_back(emp);
+}
+
+void menu::deleteEmpresa(Empresa emp) {
+    this->empresas.remove(emp);
+}
+
+// Salva cada elemento em uma linha no banco de dados passado como parâmetro usando o operador << sobrecarregado
+template<class T>
+void menu::salvar(T elements, std::string filename) {
+  std::ofstream file(filename);
   if (file.is_open()) {
-    for (auto lead : this->leads) {
-      if (lead.getEmpresa().getNome() == "") continue;
-        file << lead << std::endl;
+    for (auto element : elements) {
+//      if (lead.getEmpresa().getNome() == "") continue;
+        file << element << std::endl;
     }
   }
   file.close();
 }
 
 void menu::carregar() {
-    QFile file("data/db.txt");
+    // Carrega leads do banco de dados
+    QFile file("data/leads.txt");
 
     if (file.open(QIODevice::ReadOnly)){
 
@@ -90,81 +125,110 @@ void menu::carregar() {
             lead.setUltimoContato(parts[3].remove(0,1));
             lead.setTipoDoContato(parts[4].remove(0,1));
             lead.setMembro(parts[5].remove(0,1));
-            lead.setNotas(parts[6].remove(0,1));
+//            lead.setNotas(parts[6].remove(0,1));
 
             this->addLead(lead);
       }
 
         file.close();
     }
+    // Carrega empresas do banco de dados
+    QFile file2("data/empresas.txt");
+
+    if (file2.open(QIODevice::ReadOnly)) {
+
+        QTextStream ss(&file2);
+        while(!ss.atEnd()) {
+
+            QString line = ss.readLine();
+            auto parts = line.split(QLatin1Char(','));
+
+            Empresa emp{};
+            emp.setNome(parts[0]);
+            emp.setEmail(parts[1].remove(0,1));
+            emp.setTelefone(parts[2].remove(0,1));
+            emp.setAnotacoes(parts[3].remove(0,1));
+
+            this->addEmpresa(emp);
+        }
+
+        file2.close();
+    }
 }
 
+// Clique no botão de adicionar
 void menu::on_addButton_clicked()
 {
-    cl = new create_lead(this);
-    cl->show();
-
-}
-
-void menu::on_deleteButton_clicked()
-{
-
-    if (ui->tableWidget->selectionModel()->isRowSelected(ui->tableWidget->currentRow(),QModelIndex())) {
-        QString empName = ui->tableWidget->item(ui->tableWidget->currentRow(), 0)->text();
-        Lead* l = this->leadByEmpresa(empName);
-        ui->tableWidget->removeRow(ui->tableWidget->currentRow());
-
-        this->deleteLead(*l);
+    if (!this->switchButtonPressed) {
+        cl = new create_lead(this);
+        cl->show();
+    } else {
+        ce = new create_empresa(this);
+        ce->show();
     }
 
 
 }
 
-void menu::createLead(Lead *lead) {
-    this->addLead(*lead);
-    this->addRow(*lead);
+// Clique no botão de deletar
+void menu::on_deleteButton_clicked()
+{
+    if(!this->switchButtonPressed) {
+        // if para evitar erro quando só tem um lead
+        if (this->leadTab->selectionModel()->isRowSelected(this->leadTab->currentRow(), QModelIndex())) {
+            QString empName = this->leadTab->item(this->leadTab->currentRow(), 0)->text();
+            Lead* l = this->leadByEmpresa(empName);
+            this->leadTab->removeRow(this->leadTab->currentRow());
+
+            this->deleteLead(*l);
+        }
+    } else {
+        if (this->empresaTab->selectionModel()->isRowSelected(this->empresaTab->currentRow(), QModelIndex())) {
+            QString empName = this->empresaTab->item(this->empresaTab->currentRow(), 0)->text();
+            Empresa* e = this->empresaByName(empName);
+            this->empresaTab->removeRow(this->empresaTab->currentRow());
+
+            this->deleteEmpresa(*e);
+        }
+
+    }
+}
+
+// Clique no botão de trocar de tabela
+void menu::on_switchTableButton_clicked()
+{
+    if(this->switchButtonPressed) {
+        ui->switchTableButton->setText("Visualizar Empresas");
+        ui->addButton->setText("Adicionar Lead");
+        ui->deleteButton->setText("Deletar Lead");
+
+       this->leadTab->show();
+
+    } else {
+        ui->switchTableButton->setText("Visualizar Leads");
+        ui->addButton->setText("Adicionar Empresa");
+        ui->deleteButton->setText("Deletar Empresa");
+
+       this->leadTab->hide();
+    }
+
+    this->switchButtonPressed = !this->switchButtonPressed;
 
 }
 
-void menu::addRow(Lead lead) {
-    ui->tableWidget->insertRow(rows);
+// Cria novo lead a partir da resposta do forms
+void menu::createLead(Lead *lead) {
+    this->addLead(*lead);
+    this->leadTab->addRow();
+    this->leadTab->setRow(*lead);
+}
 
-    auto item0 = new QTableWidgetItem();
-    item0->setTextAlignment(Qt::AlignCenter);
-    ui->tableWidget->setItem(rows,0,item0);
-    ui->tableWidget->item(rows,0)->setData(Qt::DisplayRole, lead.getEmpresa().getNome());
+// Cria nova empresa a partir da resposta do forms
+void menu::createEmpresa(Empresa *emp) {
+    this->addEmpresa(*emp);
+    this->empresaTab->addRow();
+    this->empresaTab->setRow(*emp);
 
-    auto item1 = new QTableWidgetItem();
-    item1->setTextAlignment(Qt::AlignCenter);
-    ui->tableWidget->setItem(rows,1,item1);
-    ui->tableWidget->item(rows,1)->setData(Qt::DisplayRole, lead.getResponsavelDaEmpresa());
-
-    auto item2 = new QTableWidgetItem();
-    item2->setTextAlignment(Qt::AlignCenter);
-    ui->tableWidget->setItem(rows,2,item2);
-    ui->tableWidget->item(rows,2)->setData(Qt::DisplayRole, lead.getStatus());
-
-    auto item3 = new QTableWidgetItem();
-    item3->setTextAlignment(Qt::AlignCenter);
-    ui->tableWidget->setItem(rows,3,item3);
-    ui->tableWidget->item(rows,3)->setData(Qt::DisplayRole, lead.getUltimoContato());
-
-    auto item4 = new QTableWidgetItem();
-    item4->setTextAlignment(Qt::AlignCenter);
-    ui->tableWidget->setItem(rows,4,item4);
-    ui->tableWidget->item(rows,4)->setData(Qt::DisplayRole, lead.getTipoDoContato());
-
-    auto item5 = new QTableWidgetItem();
-    item5->setTextAlignment(Qt::AlignCenter);
-    ui->tableWidget->setItem(rows,5,item5);
-    ui->tableWidget->item(rows,5)->setData(Qt::DisplayRole, lead.getMembro());
-
-    auto item6 = new QTableWidgetItem();
-    item6->setTextAlignment(Qt::AlignCenter);
-    ui->tableWidget->setItem(rows,6,item6);
-    ui->tableWidget->item(rows,6)->setData(Qt::DisplayRole, lead.getNotas());
-
-    rows++;
 }
 
 // Retorna o lead correspondente ao nome da empresa passado como parâmetro
@@ -176,14 +240,31 @@ Lead* menu::leadByEmpresa(QString emp) {
     return nullptr;
 }
 
-void menu::tableItemClicked(int row, int column) {
-//    std::cout << row << ", " << column << std::endl;
-    if (row == 0) {
-        std::cout << "Implementa a pagina das empresas\n";
-
+// Retorna a empresa corresponde ao nome passado como parâmetro
+Empresa* menu::empresaByName(QString emp) {
+    for (auto &empresa : this->empresas) {
+        if (emp == empresa.getNome())
+            return &empresa;
     }
 
-//    Lead *lead = leadByEmpresa(ui->tableWidget->item(row,0)->text());
-    std::cout << ui->tableWidget->item(row,column)->text().toStdString() << std::endl;
-
+    return nullptr;
 }
+
+//void menu::tableItemClicked(int row, int column) {
+//    std::cout << row << ", " << column << std::endl;
+//    if (row == 0) {
+//        std::cout << "Implementa a pagina das empresas\n";
+
+//    }
+
+//    Lead *lead = leadByEmpresa(ui->tableWidget->item(row,0)->text());
+//    auto emp = empresaByName(this->leadTab->item(row, 0)->text());
+//      std::cout << emp->getNome().toStdString() << std::endl;
+//    std::cout << emp->getEmail().toStdString() << std::endl;
+//    std::cout << emp->getTelefone().toStdString() << std::endl;
+//    std::cout << emp->getAnotacoes().toStdString() << std::endl;
+//    std::cout << this->leadTab->item(row,column)->text().toStdString() << std::endl;
+
+//}
+
+

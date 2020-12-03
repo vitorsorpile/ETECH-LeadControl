@@ -1,13 +1,13 @@
 #include "Lead.h"
 
-Lead::Lead(Empresa emp, QString responsavel, QString stts, QString ultContato, QString tipoContato, QString memb, QString notes) {
+Lead::Lead(Empresa emp, QString responsavel, QString stts, QString ultContato, QString tipoContato, QString memb) {
   this->setEmpresa(emp);
   this->setResponsavelDaEmpresa(responsavel);
   this->setStatus(stts);
   this->setUltimoContato(ultContato);
   this->setTipoDoContato(tipoContato);
   this->setMembro(memb);
-  this->setNotas(notes);
+//  this->setNotas(notes);
 }
 
 // Métodos SET
@@ -36,9 +36,9 @@ void Lead::setMembro(QString memb){
   this->membro = memb;
 }
 
-void Lead::setNotas(QString notes){
-  this->notas = notes;
-}
+//void Lead::setNotas(QString notes){
+//  this->notas = notes;
+//}
 
 // Métodos GET
 Empresa Lead::getEmpresa(){
@@ -63,9 +63,9 @@ QString Lead::getTipoDoContato() {
 QString Lead::getMembro(){
   return this->membro;
 } 
-QString Lead::getNotas(){
-  return this->notas;
-}
+//QString Lead::getNotas(){
+//  return this->notas;
+//}
 
 // Sobrecarga de operadores
 bool Lead::operator==(const Lead& rhs) const{
@@ -76,7 +76,7 @@ std::ostream& operator<<(std::ostream& os, Lead& ld) {
   os << ld.empresa.getNome().toStdString() << ", " << ld.responsavelDaEmpresa.toStdString() << ", ";
   os << ld.status.toStdString() << ", " << ld.ultimoContato.toStdString() << ", ";
   os << ld.tipoDoContato.toStdString() << ", " << ld.membro.toStdString() << ", ";
-  os << ld.notas.toStdString();
+//  os << ld.notas.toStdString();
   return os;
 }
 

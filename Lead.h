@@ -10,12 +10,12 @@ class Lead {
   QString ultimoContato;
   QString tipoDoContato;
   QString membro;
-  QString notas;
+//  QString notas;
 
     public:
     // Construtores
     Lead() {}
-    Lead(Empresa emp, QString responsavel, QString stts, QString ultContato, QString tipoContato, QString memb, QString notes);
+    Lead(Empresa emp, QString responsavel, QString stts, QString ultContato, QString tipoContato, QString memb);
 
     // Métodos SET
     void setEmpresa(Empresa emp);
@@ -24,7 +24,7 @@ class Lead {
     void setUltimoContato(QString ultContato);
     void setTipoDoContato(QString tipoContato);
     void setMembro(QString memb);
-    void setNotas(QString notes);
+//    void setNotas(QString notes);
 
     // Métodos GET
     Empresa getEmpresa();
@@ -33,7 +33,7 @@ class Lead {
     QString getUltimoContato();
     QString getTipoDoContato();
     QString getMembro();
-    QString getNotas();
+//    QString getNotas();
 
     //Sobrecarga de operadores
     bool operator==(const Lead& rhs) const;

@@ -2,7 +2,6 @@
 #define CREATE_LEAD_H
 
 #include "Lead.h"
-
 #include <QDialog>
 
 namespace Ui {
@@ -20,7 +19,6 @@ public:
 private slots:
     void on_buttonBox_accepted();
 signals:
-    void add_lead();
     void lead_create_signal(Lead* l);
 
 

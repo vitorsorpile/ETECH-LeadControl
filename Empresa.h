@@ -11,19 +11,22 @@ class Empresa {
   QString nome;
   QString email;
   QString telefone;
+  QString anotacoes;
 
   public:
     //Construtor
-    Empresa(QString n = "", QString e = "", QString tel= "");
+    Empresa(QString n = "", QString e = "", QString tel= "", QString anot = "");
 
     //Métodos SET
     void setNome(QString n);
     void setEmail(QString e);
     void setTelefone(QString tel);
+    void setAnotacoes(QString anot);
     //Métodos GET
     QString getNome();
     QString getEmail();
     QString getTelefone();
+    QString getAnotacoes();
 
     //Sobrecarga de operadores
     bool operator==(const Empresa& rhs) const;
