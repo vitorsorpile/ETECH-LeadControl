@@ -15,7 +15,6 @@ public:
       std::ofstream file(filename);
       if (file.is_open()) {
         for (auto element : elements) {
-            std::cout << element << std::endl;
             file << element << std::endl;
         }
       }
