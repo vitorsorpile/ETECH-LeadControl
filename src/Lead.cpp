@@ -75,8 +75,8 @@ bool Lead::operator==(const Lead& rhs) const{
 std::ostream& operator<<(std::ostream& os, Lead& ld) {
   os << ld.empresa.getNome() << ", " << ld.responsavelDaEmpresa << ", ";
   os << ld.status << ", " << ld.ultimoContato << ", ";
-  os << ld.tipoDoContato << ", " << ld.membro << ", ";
-//  os << ld.notas;
+  os << ld.tipoDoContato << ", " << ld.membro;
+//  os << ", " << ld.notas;
   return os;
 }
 

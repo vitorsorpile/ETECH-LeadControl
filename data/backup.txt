@@ -1,8 +1,0 @@
-Empresa Exemplo, Responsavel Exemplo, Diagnostico, 27/11/2020, E-mail, Paulo, 
-Empresa Exemplo 2, Responsavel 2, Fechado, 27/11/2020, Telefone, Vitor, 
-dsadsad, dsadsa, Proposta, dasdada, dsadsad, dsadsa, 
-dasfsdfd, dsadsa, Proposta, dasfdasdsa, dsadsa, dsadsa, 
-dsadsa, dsadsa, Diagnostico, dasdas, dsadsa, dsadsa, 
-Empresa 1, dsadsadsa, Diagnostico, dasdsa, dsadas, dsadsa, 
-
-Empresa 1 , dsadsa, dsadsa, dsadsa
