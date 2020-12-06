@@ -5,6 +5,7 @@ table::table(int rows, int columns, QWidget* parent)
     : QTableWidget(rows, columns, parent)
 {
     this->setGeometry(30, 80, 1221, 611);
+    this->setAlternatingRowColors(true);
     this->setSelectionBehavior(QAbstractItemView::SelectRows);
     this->nrows = 0;
     this->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -69,12 +70,12 @@ void leadTable::addRow() {
 
 // Seta os dados do lead na última linha
 void leadTable::setRow(Lead lead) {
-    this->item(nrows - 1, 0)->setData(Qt::DisplayRole, lead.getEmpresa().getNome());
-    this->item(nrows - 1, 1)->setData(Qt::DisplayRole, lead.getResponsavelDaEmpresa());
-    this->item(nrows - 1, 2)->setData(Qt::DisplayRole, lead.getStatus());
-    this->item(nrows - 1, 3)->setData(Qt::DisplayRole, lead.getUltimoContato());
-    this->item(nrows - 1, 4)->setData(Qt::DisplayRole, lead.getTipoDoContato());
-    this->item(nrows - 1, 5)->setData(Qt::DisplayRole, lead.getMembro());
+    this->item(nrows - 1, 0)->setData(Qt::DisplayRole, QString::fromStdString(lead.getEmpresa().getNome()));
+    this->item(nrows - 1, 1)->setData(Qt::DisplayRole, QString::fromStdString(lead.getResponsavelDaEmpresa()));
+    this->item(nrows - 1, 2)->setData(Qt::DisplayRole, QString::fromStdString(lead.getStatus()));
+    this->item(nrows - 1, 3)->setData(Qt::DisplayRole, QString::fromStdString(lead.getUltimoContato()));
+    this->item(nrows - 1, 4)->setData(Qt::DisplayRole, QString::fromStdString(lead.getTipoDoContato()));
+    this->item(nrows - 1, 5)->setData(Qt::DisplayRole, QString::fromStdString(lead.getMembro()));
 //    this->item(nrows - 1, 6)->setData(Qt::DisplayRole, lead.getNotas());
 }
 
@@ -118,8 +119,8 @@ void empresaTable::addRow() {
 }
 // Seta os dados da empresa na última linha
 void empresaTable::setRow(Empresa emp) {
-    this->item(nrows - 1, 0)->setData(Qt::DisplayRole, emp.getNome());
-    this->item(nrows - 1, 1)->setData(Qt::DisplayRole, emp.getEmail());
-    this->item(nrows - 1, 2)->setData(Qt::DisplayRole, emp.getTelefone());
-    this->item(nrows - 1, 3)->setData(Qt::DisplayRole, emp.getAnotacoes());
+    this->item(nrows - 1, 0)->setData(Qt::DisplayRole, QString::fromStdString(emp.getNome()));
+    this->item(nrows - 1, 1)->setData(Qt::DisplayRole, QString::fromStdString(emp.getEmail()));
+    this->item(nrows - 1, 2)->setData(Qt::DisplayRole, QString::fromStdString(emp.getTelefone()));
+    this->item(nrows - 1, 3)->setData(Qt::DisplayRole, QString::fromStdString(emp.getAnotacoes()));
 }

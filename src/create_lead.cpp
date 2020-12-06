@@ -32,12 +32,12 @@ void create_lead::on_buttonBox_accepted()
     //Criar novo lead
     auto lead = new Lead();
 
-    lead->setEmpresa(Empresa(ui->empresa->text()));
-    lead->setResponsavelDaEmpresa(ui->responsavel->text());
-    lead->setStatus(ui->statusComboBox->currentText());
-    lead->setUltimoContato(ui->ultimoContato->text());
-    lead->setTipoDoContato(ui->formaDeContato->text());
-    lead->setMembro(ui->membro->text());
+    lead->setEmpresa(Empresa(ui->empresa->text().toStdString()));
+    lead->setResponsavelDaEmpresa(ui->responsavel->text().toStdString());
+    lead->setStatus(ui->statusComboBox->currentText().toStdString());
+    lead->setUltimoContato(ui->ultimoContato->text().toStdString());
+    lead->setTipoDoContato(ui->formaDeContato->text().toStdString());
+    lead->setMembro(ui->membro->text().toStdString());
 //    lead->setNotas("");
 
     emit this->lead_create_signal(lead);

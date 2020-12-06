@@ -1,6 +1,6 @@
 #include "Lead.h"
 
-Lead::Lead(Empresa emp, QString responsavel, QString stts, QString ultContato, QString tipoContato, QString memb) {
+Lead::Lead(Empresa emp, std::string responsavel, std::string stts, std::string ultContato, std::string tipoContato, std::string memb) {
   this->setEmpresa(emp);
   this->setResponsavelDaEmpresa(responsavel);
   this->setStatus(stts);
@@ -15,28 +15,28 @@ void Lead::setEmpresa(Empresa emp){
   this->empresa = emp;
 }
 
-void Lead::setResponsavelDaEmpresa(QString responsavel){
+void Lead::setResponsavelDaEmpresa(std::string responsavel){
   this->responsavelDaEmpresa = responsavel;
 }
 
-void Lead::setStatus(QString stts) {
+void Lead::setStatus(std::string stts) {
   this->status = stts;
 }
 
-void Lead::setUltimoContato(QString ultContato){
+void Lead::setUltimoContato(std::string ultContato){
   this->ultimoContato = ultContato;
 }
 
 
-void Lead::setTipoDoContato(QString tipoContato) {
+void Lead::setTipoDoContato(std::string tipoContato) {
   this->tipoDoContato = tipoContato;
 }
 
-void Lead::setMembro(QString memb){
+void Lead::setMembro(std::string memb){
   this->membro = memb;
 }
 
-//void Lead::setNotas(QString notes){
+//void Lead::setNotas(std::string notes){
 //  this->notas = notes;
 //}
 
@@ -44,26 +44,26 @@ void Lead::setMembro(QString memb){
 Empresa Lead::getEmpresa(){
   return this->empresa;
 }
-QString Lead::getResponsavelDaEmpresa(){
+std::string Lead::getResponsavelDaEmpresa(){
   return this->responsavelDaEmpresa;
 }
 
-QString Lead::getStatus() {
+std::string Lead::getStatus() {
   return this->status;
 }
 
-QString Lead::getUltimoContato(){
+std::string Lead::getUltimoContato(){
   return this->ultimoContato;
 }
 
-QString Lead::getTipoDoContato() {
+std::string Lead::getTipoDoContato() {
   return this->tipoDoContato;
 }
 
-QString Lead::getMembro(){
+std::string Lead::getMembro(){
   return this->membro;
 } 
-//QString Lead::getNotas(){
+//std::string Lead::getNotas(){
 //  return this->notas;
 //}
 
@@ -73,10 +73,10 @@ bool Lead::operator==(const Lead& rhs) const{
 }
 
 std::ostream& operator<<(std::ostream& os, Lead& ld) {
-  os << ld.empresa.getNome().toStdString() << ", " << ld.responsavelDaEmpresa.toStdString() << ", ";
-  os << ld.status.toStdString() << ", " << ld.ultimoContato.toStdString() << ", ";
-  os << ld.tipoDoContato.toStdString() << ", " << ld.membro.toStdString() << ", ";
-//  os << ld.notas.toStdString();
+  os << ld.empresa.getNome() << ", " << ld.responsavelDaEmpresa << ", ";
+  os << ld.status << ", " << ld.ultimoContato << ", ";
+  os << ld.tipoDoContato << ", " << ld.membro << ", ";
+//  os << ld.notas;
   return os;
 }
 

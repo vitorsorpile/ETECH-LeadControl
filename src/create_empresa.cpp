@@ -30,10 +30,10 @@ void create_empresa::on_buttonBox_accepted()
 {
     auto emp = new Empresa();
 
-    emp->setNome(ui->nome->text());
-    emp->setEmail(ui->email->text());
-    emp->setTelefone(ui->telefone->text());
-    emp->setAnotacoes(ui->anotacoes->text());
+    emp->setNome(ui->nome->text().toStdString());
+    emp->setEmail(ui->email->text().toStdString());
+    emp->setTelefone(ui->telefone->text().toStdString());
+    emp->setAnotacoes(ui->anotacoes->text().toStdString());
 
     emit this->empresa_create_signal(emp);
 

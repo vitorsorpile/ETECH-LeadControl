@@ -1,7 +1,7 @@
 #include "Empresa.h"
 
 //Construtor
-Empresa::Empresa(QString n, QString e, QString tel, QString anot) {
+Empresa::Empresa(std::string n, std::string e, std::string tel, std::string anot) {
   this->setNome(n);
   this->setEmail(e);
   this->setTelefone(tel);
@@ -9,35 +9,35 @@ Empresa::Empresa(QString n, QString e, QString tel, QString anot) {
 }
 
 //Métodos SET
-void Empresa::setNome(QString n) {
+void Empresa::setNome(std::string n) {
   this->nome = n;
 }
 
-void Empresa::setEmail(QString e) {
+void Empresa::setEmail(std::string e) {
   this->email = e;
 }
 
-void Empresa::setTelefone(QString tel) {
+void Empresa::setTelefone(std::string tel) {
   this->telefone = tel;
 }
 
-void Empresa::setAnotacoes(QString anot) {
+void Empresa::setAnotacoes(std::string anot) {
   this->anotacoes = anot;
 }
 
 //Métodos GET
-QString Empresa::getNome() {
+std::string Empresa::getNome() {
   return this->nome;
 }
-QString Empresa::getEmail() {
+std::string Empresa::getEmail() {
   return this->email;
 }
 
-QString Empresa::getTelefone() {
+std::string Empresa::getTelefone() {
   return this->telefone;
 }
 
-QString Empresa::getAnotacoes() {
+std::string Empresa::getAnotacoes() {
   return this->anotacoes;
 }
 
@@ -47,7 +47,7 @@ bool Empresa::operator==(const Empresa& rhs) const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Empresa& emp) {
-  os << emp.nome.toStdString() << ", " << emp.email.toStdString() << ", ";
-  os << emp.telefone.toStdString() << ", " << emp.anotacoes.toStdString() ;
+  os << emp.nome << ", " << emp.email << ", ";
+  os << emp.telefone << ", " << emp.anotacoes ;
   return os;
 }

@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = Interface1.0.0
-DISTDIR = /media/vitorsorpile/LinuxExtraSpace/prog3/ControleDeLead/ETECH-LeadControl/Interface\ (copy)/.tmp/Interface1.0.0
+DISTDIR = /media/vitorsorpile/LinuxExtraSpace/prog3/ControleDeLead/ETECH-LeadControl/Interface\ (copy)/src/.tmp/Interface1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
 LIBS          = $(SUBLIBS) -L/usr/lib/x86_64-linux-gnu -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -50,14 +50,13 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = src/Empresa.cpp \
-		src/Lead.cpp \
-		src/create_empresa.cpp \
-		src/create_lead.cpp \
-		src/main.cpp \
-		src/menu.cpp \
-		src/App.cpp \
-		src/table.cpp moc_create_empresa.cpp \
+SOURCES       = Empresa.cpp \
+		Lead.cpp \
+		create_empresa.cpp \
+		create_lead.cpp \
+		main.cpp \
+		menu.cpp \
+		table.cpp moc_create_empresa.cpp \
 		moc_create_lead.cpp \
 		moc_menu.cpp
 OBJECTS       = Empresa.o \
@@ -66,7 +65,6 @@ OBJECTS       = Empresa.o \
 		create_lead.o \
 		main.o \
 		menu.o \
-		App.o \
 		table.o \
 		moc_create_empresa.o \
 		moc_create_lead.o \
@@ -125,7 +123,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
-		../.qmake.stash \
+		../../.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -144,20 +142,18 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		Interface.pro src/Empresa.h \
-		src/Lead.h \
-		src/create_empresa.h \
-		src/create_lead.h \
-		src/menu.h \
-		src/App.h \
-		src/table.h src/Empresa.cpp \
-		src/Lead.cpp \
-		src/create_empresa.cpp \
-		src/create_lead.cpp \
-		src/main.cpp \
-		src/menu.cpp \
-		src/App.cpp \
-		src/table.cpp
+		Interface.pro Empresa.h \
+		Lead.h \
+		create_empresa.h \
+		create_lead.h \
+		menu.h \
+		table.h Empresa.cpp \
+		Lead.cpp \
+		create_empresa.cpp \
+		create_lead.cpp \
+		main.cpp \
+		menu.cpp \
+		table.cpp
 QMAKE_TARGET  = Interface
 DESTDIR       = 
 TARGET        = Interface
@@ -223,7 +219,7 @@ Makefile: Interface.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.co
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
-		../.qmake.stash \
+		../../.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -301,7 +297,7 @@ Makefile: Interface.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.co
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
-../.qmake.stash:
+../../.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -339,9 +335,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/Empresa.h src/Lead.h src/create_empresa.h src/create_lead.h src/menu.h src/App.h src/table.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/Empresa.cpp src/Lead.cpp src/create_empresa.cpp src/create_lead.cpp src/main.cpp src/menu.cpp src/App.cpp src/table.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/create_empresa.ui src/create_lead.ui src/menu.ui $(DISTDIR)/
+	$(COPY_FILE) --parents Empresa.h Lead.h create_empresa.h create_lead.h menu.h table.h $(DISTDIR)/
+	$(COPY_FILE) --parents Empresa.cpp Lead.cpp create_empresa.cpp create_lead.cpp main.cpp menu.cpp table.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents create_empresa.ui create_lead.ui menu.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -375,11 +371,10 @@ moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 compiler_moc_header_make_all: moc_create_empresa.cpp moc_create_lead.cpp moc_menu.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_create_empresa.cpp moc_create_lead.cpp moc_menu.cpp
-moc_create_empresa.cpp: src/Empresa.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h \
+moc_create_empresa.cpp: Empresa.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig-bootstrapped.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig.h \
@@ -401,21 +396,23 @@ moc_create_empresa.cpp: src/Empresa.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qmutex.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnumeric.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs_win.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qiterator.h \
@@ -477,17 +474,16 @@ moc_create_empresa.cpp: src/Empresa.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qvector2d.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtouchdevice.h \
-		src/create_empresa.h \
+		create_empresa.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I'/media/vitorsorpile/LinuxExtraSpace/prog3/ControleDeLead/ETECH-LeadControl/Interface (copy)' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IE:/Qt-Windowns/Tools/mingw810_64/x86_64-w64-mingw32/include src/create_empresa.h -o moc_create_empresa.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I'/media/vitorsorpile/LinuxExtraSpace/prog3/ControleDeLead/ETECH-LeadControl/Interface (copy)/src' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IE:/Qt-Windowns/Tools/mingw810_64/x86_64-w64-mingw32/include create_empresa.h -o moc_create_empresa.cpp
 
-moc_create_lead.cpp: src/Lead.h \
-		src/Empresa.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h \
+moc_create_lead.cpp: Lead.h \
+		Empresa.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig-bootstrapped.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig.h \
@@ -509,21 +505,23 @@ moc_create_lead.cpp: src/Lead.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qmutex.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnumeric.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs_win.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qiterator.h \
@@ -585,10 +583,10 @@ moc_create_lead.cpp: src/Lead.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qvector2d.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtouchdevice.h \
-		src/create_lead.h \
+		create_lead.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I'/media/vitorsorpile/LinuxExtraSpace/prog3/ControleDeLead/ETECH-LeadControl/Interface (copy)' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IE:/Qt-Windowns/Tools/mingw810_64/x86_64-w64-mingw32/include src/create_lead.h -o moc_create_lead.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I'/media/vitorsorpile/LinuxExtraSpace/prog3/ControleDeLead/ETECH-LeadControl/Interface (copy)/src' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IE:/Qt-Windowns/Tools/mingw810_64/x86_64-w64-mingw32/include create_lead.h -o moc_create_lead.cpp
 
 moc_menu.cpp: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h \
@@ -690,7 +688,7 @@ moc_menu.cpp: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qvector2d.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtouchdevice.h \
-		src/table.h \
+		table.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QTableWidget \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtablewidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtableview.h \
@@ -713,37 +711,37 @@ moc_menu.cpp: /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qrubberband.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QHeaderView \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qheaderview.h \
-		src/Lead.h \
-		src/Empresa.h \
+		Lead.h \
+		Empresa.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QListWidgetItem \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlistwidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlistview.h \
-		src/create_lead.h \
+		create_lead.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
-		src/create_empresa.h \
-		src/App.h \
-		src/menu.h \
+		create_empresa.h \
+		menu.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I'/media/vitorsorpile/LinuxExtraSpace/prog3/ControleDeLead/ETECH-LeadControl/Interface (copy)' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IE:/Qt-Windowns/Tools/mingw810_64/x86_64-w64-mingw32/include src/menu.h -o moc_menu.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I'/media/vitorsorpile/LinuxExtraSpace/prog3/ControleDeLead/ETECH-LeadControl/Interface (copy)/src' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IE:/Qt-Windowns/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IE:/Qt-Windowns/Tools/mingw810_64/x86_64-w64-mingw32/include menu.h -o moc_menu.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_uic_make_all: ui_create_empresa.h ui_create_lead.h ui_menu.h
 compiler_uic_clean:
 	-$(DEL_FILE) ui_create_empresa.h ui_create_lead.h ui_menu.h
-ui_create_empresa.h: src/create_empresa.ui \
+ui_create_empresa.h: create_empresa.ui \
 		/usr/lib/qt5/bin/uic
-	/usr/lib/qt5/bin/uic src/create_empresa.ui -o ui_create_empresa.h
+	/usr/lib/qt5/bin/uic create_empresa.ui -o ui_create_empresa.h
 
-ui_create_lead.h: src/create_lead.ui \
+ui_create_lead.h: create_lead.ui \
 		/usr/lib/qt5/bin/uic
-	/usr/lib/qt5/bin/uic src/create_lead.ui -o ui_create_lead.h
+	/usr/lib/qt5/bin/uic create_lead.ui -o ui_create_lead.h
 
-ui_menu.h: src/menu.ui \
+ui_menu.h: menu.ui \
 		/usr/lib/qt5/bin/uic
-	/usr/lib/qt5/bin/uic src/menu.ui -o ui_menu.h
+	/usr/lib/qt5/bin/uic menu.ui -o ui_menu.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -755,19 +753,10 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-Empresa.o: src/Empresa.cpp src/Empresa.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Empresa.o src/Empresa.cpp
-
-Lead.o: src/Lead.cpp src/Lead.h \
-		src/Empresa.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Lead.o src/Lead.cpp
-
-create_empresa.o: src/create_empresa.cpp src/create_empresa.h \
-		src/Empresa.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h \
+Empresa.o: Empresa.cpp Empresa.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig-bootstrapped.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig.h \
@@ -789,21 +778,89 @@ create_empresa.o: src/create_empresa.cpp src/create_empresa.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qmutex.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnumeric.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Empresa.o Empresa.cpp
+
+Lead.o: Lead.cpp Lead.h \
+		Empresa.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig-bootstrapped.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qtcore-config.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qsystemdetection.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qprocessordetection.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qcompilerdetection.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qtypeinfo.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qsysinfo.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qlogging.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qflags.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbasicatomic.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_bootstrap.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qgenericatomic.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_cxx11.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_msvc.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobalstatic.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qmutex.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnumeric.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Lead.o Lead.cpp
+
+create_empresa.o: create_empresa.cpp create_empresa.h \
+		Empresa.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig-bootstrapped.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qtcore-config.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qsystemdetection.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qprocessordetection.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qcompilerdetection.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qtypeinfo.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qsysinfo.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qlogging.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qflags.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbasicatomic.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_bootstrap.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qgenericatomic.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_cxx11.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_msvc.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobalstatic.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qmutex.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnumeric.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs_win.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qiterator.h \
@@ -915,15 +972,14 @@ create_empresa.o: src/create_empresa.cpp src/create_empresa.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextoption.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QSpacerItem \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o create_empresa.o src/create_empresa.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o create_empresa.o create_empresa.cpp
 
-create_lead.o: src/create_lead.cpp src/create_lead.h \
-		src/Lead.h \
-		src/Empresa.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h \
+create_lead.o: create_lead.cpp create_lead.h \
+		Lead.h \
+		Empresa.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig-bootstrapped.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig.h \
@@ -945,21 +1001,23 @@ create_lead.o: src/create_lead.cpp src/create_lead.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qmutex.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnumeric.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs_win.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h \
-		/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qiterator.h \
@@ -1074,9 +1132,9 @@ create_lead.o: src/create_lead.cpp src/create_lead.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QSpacerItem \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QVBoxLayout \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o create_lead.o src/create_lead.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o create_lead.o create_lead.cpp
 
-main.o: src/main.cpp src/menu.h \
+main.o: main.cpp menu.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -1177,7 +1235,7 @@ main.o: src/main.cpp src/menu.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qvector2d.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtouchdevice.h \
-		src/table.h \
+		table.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QTableWidget \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtablewidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtableview.h \
@@ -1200,16 +1258,16 @@ main.o: src/main.cpp src/menu.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qrubberband.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QHeaderView \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qheaderview.h \
-		src/Lead.h \
-		src/Empresa.h \
+		Lead.h \
+		Empresa.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QListWidgetItem \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlistwidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlistview.h \
-		src/create_lead.h \
+		create_lead.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
-		src/create_empresa.h \
-		src/App.h \
+		create_empresa.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h \
@@ -1218,9 +1276,9 @@ main.o: src/main.cpp src/menu.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/QList
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-menu.o: src/menu.cpp src/menu.h \
+menu.o: menu.cpp menu.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -1321,7 +1379,7 @@ menu.o: src/menu.cpp src/menu.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qvector2d.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/qtouchdevice.h \
-		src/table.h \
+		table.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QTableWidget \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtablewidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtableview.h \
@@ -1344,16 +1402,16 @@ menu.o: src/menu.cpp src/menu.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qrubberband.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QHeaderView \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qheaderview.h \
-		src/Lead.h \
-		src/Empresa.h \
+		Lead.h \
+		Empresa.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QListWidgetItem \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlistwidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qlistview.h \
-		src/create_lead.h \
+		create_lead.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDialog \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdialog.h \
-		src/create_empresa.h \
-		src/App.h \
+		create_empresa.h \
 		ui_menu.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QAction \
@@ -1382,14 +1440,9 @@ menu.o: src/menu.cpp src/menu.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/QFile \
 		/usr/include/x86_64-linux-gnu/qt5/QtCore/QTextStream \
 		/usr/include/x86_64-linux-gnu/qt5/QtGui/QPixmap
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menu.o src/menu.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menu.o menu.cpp
 
-App.o: src/App.cpp src/App.h \
-		src/Lead.h \
-		src/Empresa.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o App.o src/App.cpp
-
-table.o: src/table.cpp src/table.h \
+table.o: table.cpp table.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QTableWidget \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtablewidget.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h \
@@ -1511,9 +1564,10 @@ table.o: src/table.cpp src/table.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qrubberband.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QHeaderView \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qheaderview.h \
-		src/Lead.h \
-		src/Empresa.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o table.o src/table.cpp
+		Lead.h \
+		Empresa.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QString
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o table.o table.cpp
 
 moc_create_empresa.o: moc_create_empresa.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_create_empresa.o moc_create_empresa.cpp

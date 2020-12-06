@@ -6,7 +6,7 @@
 #include <QListWidgetItem>
 #include "create_lead.h"
 #include "create_empresa.h"
-#include "Lead.h"
+#include "App.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class menu; }
@@ -18,20 +18,20 @@ class menu : public QWidget
 
 
 public:
+    App app;
     create_lead *cl;
     create_empresa *ce;
     menu(QWidget *parent = nullptr);
     ~menu();
 
 
-    template<class T> void salvar(T elements, std::string filename);
-    void carregar();
-    void addRow(Lead lead);
-
+//    template<class T> void salvar(T elements, std::string filename);
+//    void carregar();
+//    void addRow(Lead lead);
 
 private:
-    std::list<Lead> leads;
-    std::list<Empresa> empresas;
+//    std::list<Lead> leads;
+//    std::list<Empresa> empresas;
 
     leadTable *leadTab;
     empresaTable *empresaTab;
@@ -40,13 +40,13 @@ private slots:
     void on_addButton_clicked();
     void on_deleteButton_clicked();
 
-    void addLead(Lead lead);
+//    void addLead(Lead lead);
 
-    void deleteLead(Lead lead);
+//    void deleteLead(Lead lead);
     void createLead(Lead *lead);
 
-    void addEmpresa(Empresa emp);
-    void deleteEmpresa(Empresa emp);
+//    void addEmpresa(Empresa emp);
+//    void deleteEmpresa(Empresa emp);
     void createEmpresa(Empresa *emp);
 
 //    void tableItemClicked(int, int);
@@ -55,8 +55,8 @@ private slots:
 
 private:
     Ui::menu *ui;
-    Lead* leadByEmpresa(QString emp);
-    Empresa* empresaByName(QString emp);
+//    Lead* leadByEmpresa(QString emp);
+//    Empresa* empresaByName(QString emp);
     bool switchButtonPressed;
 
 };

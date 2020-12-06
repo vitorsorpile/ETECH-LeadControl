@@ -2,6 +2,7 @@
 #define TABLE_H
 
 #include <QTableWidget>
+#include <QHeaderView>
 #include "Lead.h"
 
 class table : public QTableWidget

@@ -100,7 +100,7 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>170</red>
+        <red>0</red>
         <green>255</green>
         <blue>255</blue>
        </color>
@@ -128,8 +128,8 @@
       <brush brushstyle="SolidPattern">
        <color alpha="255">
         <red>0</red>
-        <green>255</green>
-        <blue>255</blue>
+        <green>212</green>
+        <blue>212</blue>
        </color>
       </brush>
      </colorrole>
@@ -145,7 +145,7 @@
      <colorrole role="Link">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>85</red>
+        <red>0</red>
         <green>255</green>
         <blue>255</blue>
        </color>
@@ -154,7 +154,7 @@
      <colorrole role="AlternateBase">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>85</red>
+        <red>153</red>
         <green>255</green>
         <blue>255</blue>
        </color>
@@ -264,7 +264,7 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>170</red>
+        <red>0</red>
         <green>255</green>
         <blue>255</blue>
        </color>
@@ -292,8 +292,8 @@
       <brush brushstyle="SolidPattern">
        <color alpha="255">
         <red>0</red>
-        <green>255</green>
-        <blue>255</blue>
+        <green>212</green>
+        <blue>212</blue>
        </color>
       </brush>
      </colorrole>
@@ -309,7 +309,7 @@
      <colorrole role="Link">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>85</red>
+        <red>0</red>
         <green>255</green>
         <blue>255</blue>
        </color>
@@ -318,7 +318,7 @@
      <colorrole role="AlternateBase">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>85</red>
+        <red>153</red>
         <green>255</green>
         <blue>255</blue>
        </color>
@@ -455,9 +455,9 @@
      <colorrole role="Highlight">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>120</green>
-        <blue>215</blue>
+        <red>145</red>
+        <green>145</green>
+        <blue>145</blue>
        </color>
       </brush>
      </colorrole>
@@ -473,7 +473,7 @@
      <colorrole role="Link">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>85</red>
+        <red>0</red>
         <green>255</green>
         <blue>255</blue>
        </color>
@@ -482,7 +482,7 @@
      <colorrole role="AlternateBase">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>85</red>
+        <red>153</red>
         <green>255</green>
         <blue>255</blue>
        </color>
@@ -592,7 +592,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Deletar Lead</string>
+       <string>Excluir Lead</string>
       </property>
      </widget>
     </item>
