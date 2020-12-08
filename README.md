@@ -18,6 +18,7 @@ Para detalhes de como utilizar o programa e imagens em funcionamento, consulte [
 
 
 ## Instalação e execução
+Ubuntu 18.04.5 LTS:
 ```
 $ sudo apt-get install qt5-default
 $ cd (pasta onde está o projeto)
