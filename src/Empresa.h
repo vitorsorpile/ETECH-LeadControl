@@ -2,11 +2,10 @@
 #define EMPRESA_H
 
 #include <iostream>
-//#include <QString>
 
-
+// Classe que representa uma empresa
 class Empresa {
-
+private:
   std::string nome;
   std::string email;
   std::string telefone;

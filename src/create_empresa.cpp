@@ -11,13 +11,12 @@ create_empresa::create_empresa(QWidget *parent) :
     QPixmap logo("images/logo.png");
     ui->logo->setPixmap(logo.scaled(250,42,Qt::KeepAspectRatio));
 
-    //Mudar a cor da caixa de seleção
+    //Mudar a cor dos botões
     ui->buttonBox->setStyleSheet("background-color:white");
 
 
     //Criar conexão entre a tela principal e a de adicionar empresa
     QObject::connect(this, SIGNAL(empresa_create_signal(Empresa*)), this->parent(), SLOT(createEmpresa(Empresa*)));
-
 
 }
 

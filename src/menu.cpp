@@ -26,14 +26,11 @@ menu::menu(QWidget *parent)
     this->empresaTab = new empresaTable(0, 4, this);
     this->leadTab = new leadTable(0, 6, this);
 
-//    connect(this->leadTab, SIGNAL(cellDoubleClicked(int,int)), this, SLOT(tableItemClicked(int,int)));
-
     // Coloca logo da ETECH
     QPixmap logo("images/logo.png");
     ui->logo->setPixmap(logo.scaled(360,50,Qt::KeepAspectRatio));
 
     // Carrega dados do banco de dados
-//    this->carregar();
       app.carregar();
 
 

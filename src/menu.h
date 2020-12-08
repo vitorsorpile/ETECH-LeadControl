@@ -24,40 +24,20 @@ public:
     menu(QWidget *parent = nullptr);
     ~menu();
 
-
-//    template<class T> void salvar(T elements, std::string filename);
-//    void carregar();
-//    void addRow(Lead lead);
-
 private:
-//    std::list<Lead> leads;
-//    std::list<Empresa> empresas;
-
     leadTable *leadTab;
     empresaTable *empresaTab;
+    Ui::menu *ui;
+    bool switchButtonPressed;
 
 private slots:
     void on_addButton_clicked();
     void on_deleteButton_clicked();
 
-//    void addLead(Lead lead);
-
-//    void deleteLead(Lead lead);
     void createLead(Lead *lead);
-
-//    void addEmpresa(Empresa emp);
-//    void deleteEmpresa(Empresa emp);
     void createEmpresa(Empresa *emp);
 
-//    void tableItemClicked(int, int);
-
     void on_switchTableButton_clicked();
-
-private:
-    Ui::menu *ui;
-//    Lead* leadByEmpresa(QString emp);
-//    Empresa* empresaByName(QString emp);
-    bool switchButtonPressed;
 
 };
 

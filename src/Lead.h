@@ -3,7 +3,9 @@
 
 #include "Empresa.h"
 
+// Classe que representa um possível cliente
 class Lead {
+private:
   Empresa empresa; 
   std::string responsavelDaEmpresa;
   std::string status;

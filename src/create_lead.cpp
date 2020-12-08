@@ -13,9 +13,8 @@ create_lead::create_lead(QWidget *parent) :
     QPixmap logo("images/logo.png");
     ui->logo->setPixmap(logo.scaled(250,42,Qt::KeepAspectRatio));
    
-    //Mudar a cor da caixa de seleção
+    //Mudar a cor da caixa do botão
     ui->buttonBox->setStyleSheet("background-color:white");
-//    ui->statusComboBox->setStyleSheet("background-color:white");
 
     //Criar conexão entre a tela principal e a de adicionar lead
     QObject::connect(this, SIGNAL(lead_create_signal(Lead*)), this->parent(), SLOT(createLead(Lead*)));

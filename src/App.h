@@ -1,3 +1,6 @@
+#ifndef APP_H
+#define APP_H
+
 #include "Lead.h"
 #include "Empresa.h"
 
@@ -5,8 +8,7 @@
 #include <sstream>
 #include <fstream>
 
-// Classe resposável por gerenciar os leads e empresas
-//   e facilitar a integração com a interface gráfica
+// Classe resposável por gerenciar os leads e empresas e facilitar a integração com a interface gráfica
 class App {
 public:
 
@@ -37,3 +39,5 @@ private:
     std::list<Lead> leads;
     std::list<Empresa> empresas;
 };
+
+#endif
