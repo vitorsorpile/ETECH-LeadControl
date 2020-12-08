@@ -17,7 +17,9 @@ SOURCES += \
     src/main.cpp \
     src/menu.cpp \
     src/App.cpp \
-    src/table.cpp
+    src/Table.cpp \
+    src/LeadTable.cpp \
+    src/EmpresaTable.cpp
 
 HEADERS += \
     src/Empresa.h \
@@ -26,7 +28,9 @@ HEADERS += \
     src/create_lead.h \
     src/menu.h \
     src/App.h \
-    src/table.h
+    src/Table.h \
+    src/LeadTable.h \
+    src/EmpresaTable.h
 
 FORMS += \
     src/create_empresa.ui \

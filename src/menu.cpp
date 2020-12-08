@@ -1,7 +1,5 @@
 #include "menu.h"
 #include "ui_menu.h"
-#include "Lead.h"
-#include "table.h"
 
 #include <QFile>
 #include <QTextStream>
@@ -23,8 +21,8 @@ menu::menu(QWidget *parent)
     this->switchButtonPressed = false;
 
     // Cria tabelas
-    this->empresaTab = new empresaTable(0, 4, this);
-    this->leadTab = new leadTable(0, 6, this);
+    this->empresaTable = new EmpresaTable(0, 4, this);
+    this->leadTable = new LeadTable(0, 6, this);
 
     // Coloca logo da ETECH
     QPixmap logo("images/logo.png");
@@ -35,24 +33,24 @@ menu::menu(QWidget *parent)
 
 
     // Configurações das tabelas
-    this->empresaTab->horizontalHeader()->setFont(QFont("Ubuntu", 12, QFont::Bold));
-    this->empresaTab->horizontalHeader()->setHighlightSections(false);
+    this->empresaTable->horizontalHeader()->setFont(QFont("Ubuntu", 12, QFont::Bold));
+    this->empresaTable->horizontalHeader()->setHighlightSections(false);
 
-    this->leadTab->horizontalHeader()->setFont(QFont("Ubuntu", 12, QFont::Bold));
-    this->leadTab->horizontalHeader()->setHighlightSections(false);
+    this->leadTable->horizontalHeader()->setFont(QFont("Ubuntu", 12, QFont::Bold));
+    this->leadTable->horizontalHeader()->setHighlightSections(false);
 
 
 
     // Coloca cada lead em uma linha na tabela na interface
     for (auto lead : app.getLeads()) {
-        this->leadTab->addRow();
-        this->leadTab->setRow(lead);
+        this->leadTable->addRow();
+        this->leadTable->setRow(lead);
     }
 
     // Coloca cada empresa em uma linha na tabela na interface
     for (auto emp: app.getEmpresas()) {
-        this->empresaTab->addRow();
-        this->empresaTab->setRow(emp);
+        this->empresaTable->addRow();
+        this->empresaTable->setRow(emp);
     }
 
 
@@ -94,18 +92,18 @@ void menu::on_deleteButton_clicked()
 {
     if(!this->switchButtonPressed) {
         // if para evitar erro quando só tem um lead
-        if (this->leadTab->selectionModel()->isRowSelected(this->leadTab->currentRow(), QModelIndex())) {
-            std::string empName = this->leadTab->item(this->leadTab->currentRow(), 0)->text().toStdString();
+        if (this->leadTable->selectionModel()->isRowSelected(this->leadTable->currentRow(), QModelIndex())) {
+            std::string empName = this->leadTable->item(this->leadTable->currentRow(), 0)->text().toStdString();
             Lead* l = app.leadByEmpresa(empName);
-            this->leadTab->removeRow(this->leadTab->currentRow());
+            this->leadTable->removeRow(this->leadTable->currentRow());
 
             app.deleteLead(*l);
         }
     } else {
-        if (this->empresaTab->selectionModel()->isRowSelected(this->empresaTab->currentRow(), QModelIndex())) {
-            std::string empName = this->empresaTab->item(this->empresaTab->currentRow(), 0)->text().toStdString();
+        if (this->empresaTable->selectionModel()->isRowSelected(this->empresaTable->currentRow(), QModelIndex())) {
+            std::string empName = this->empresaTable->item(this->empresaTable->currentRow(), 0)->text().toStdString();
             Empresa* e = app.empresaByName(empName);
-            this->empresaTab->removeRow(this->empresaTab->currentRow());
+            this->empresaTable->removeRow(this->empresaTable->currentRow());
 
             app.deleteEmpresa(*e);
         }
@@ -121,14 +119,14 @@ void menu::on_switchTableButton_clicked()
         ui->addButton->setText("Adicionar Lead");
         ui->deleteButton->setText("Excluir Lead");
 
-       this->leadTab->show();
+       this->leadTable->show();
 
     } else {
         ui->switchTableButton->setText("Visualizar Leads");
         ui->addButton->setText("Adicionar Empresa");
         ui->deleteButton->setText("Excluir Empresa");
 
-       this->leadTab->hide();
+       this->leadTable->hide();
     }
 
     this->switchButtonPressed = !this->switchButtonPressed;
@@ -138,14 +136,14 @@ void menu::on_switchTableButton_clicked()
 // Cria novo lead a partir da resposta do forms
 void menu::createLead(Lead *lead) {
     app.addLead(*lead);
-    this->leadTab->addRow();
-    this->leadTab->setRow(*lead);
+    this->leadTable->addRow();
+    this->leadTable->setRow(*lead);
 }
 
 // Cria nova empresa a partir da resposta do forms
 void menu::createEmpresa(Empresa *emp) {
     app.addEmpresa(*emp);
-    this->empresaTab->addRow();
-    this->empresaTab->setRow(*emp);
+    this->empresaTable->addRow();
+    this->empresaTable->setRow(*emp);
 
 }

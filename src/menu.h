@@ -2,7 +2,9 @@
 #define MENU_H
 
 #include <QWidget>
-#include "table.h"
+#include "Table.h"
+#include "EmpresaTable.h"
+#include "LeadTable.h"
 #include <QListWidgetItem>
 #include "create_lead.h"
 #include "create_empresa.h"
@@ -25,8 +27,8 @@ public:
     ~menu();
 
 private:
-    leadTable *leadTab;
-    empresaTable *empresaTab;
+    LeadTable *leadTable;
+    EmpresaTable *empresaTable;
     Ui::menu *ui;
     bool switchButtonPressed;
 
